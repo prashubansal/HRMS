@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base{
+    body{
+        @apply bg-[#f4f6f9]
+    }
+}
+
+@layer utilities {
+    .footerLink {
+        color: #007bff;
+        text-decoration: none;
+        margin: 0 5px;
+    }
+
+    .footerLink:hover {
+        text-decoration: underline;
+    }
+}
+
+@layer utilities {
+    .btn {
+        @apply bg-blue-700 flex justify-center items-center text-white
+        py-3 font-semibold rounded-full transform duration-200 cursor-pointer
+    }
+
+    .btn:hover {
+        @apply bg-blue-800
+    }
+}

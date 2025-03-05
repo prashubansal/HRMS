@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave Management - Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        let leaveCount = 1;
+
+        function addLeaveType() {
+            leaveCount++;
+            const leaveTypesContainer = document.getElementById('leave-types-container');
+
+            const leaveTypeTemplate = `
+                <div id="leave-type-${leaveCount}" class="space-y-4 border-t border-gray-200 pt-4 mt-4">
+                    <h3 class="text-md font-semibold">Leave Type ${leaveCount}</h3>
+                    <div>
+                        <label for="leave-name-${leaveCount}" class="block text-sm font-medium text-gray-700">Leave Name</label>
+                        <input 
+                            type="text" 
+                            id="leave-name-${leaveCount}" 
+                            name="leave-name-${leaveCount}" 
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                            placeholder="e.g., Sick Leave">
+                    </div>
+                </div>
+            `;
+
+            leaveTypesContainer.insertAdjacentHTML('beforeend', leaveTypeTemplate);
+        }
+    </script>
+</head>
+<body class="bg-gray-100 font-sans">
+    <!-- Header -->
+    <header class="bg-white shadow-md py-4 px-6 flex justify-between items-center">
+        <div class="flex items-center">
+            <img src="/path/to/logo.png" alt="Company Logo" class="h-8 w-8 mr-2">
+            <h1 class="text-xl font-semibold">Leave Management</h1>
+        </div>
+        <div class="flex items-center space-x-4">
+            <button class="relative">
+                <span class="material-icons text-gray-600">notifications</span>
+                <span class="absolute top-0 right-0 bg-red-500 text-white text-xs font-bold w-4 h-4 rounded-full flex items-center justify-center">3</span>
+            </button>
+            <div class="flex items-center space-x-2">
+                <img src="/path/to/profile-pic.jpg" alt="Profile" class="h-8 w-8 rounded-full">
+                <span class="text-gray-700">Admin</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="p-6">
+        <!-- Dashboard Header -->
+        <div class="mb-6">
+            <h1 class="text-3xl font-semibold text-gray-800">Leave Management Dashboard</h1>
+        </div>
+
+        <!-- Employee Table and Add Leave Form -->
+        <div class="flex space-x-8">
+            <!-- Employee Table -->
+            <div class="w-2/3 bg-white rounded-lg shadow-md p-6">
+                <div class="flex justify-between">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-4">Leaves Overview</h2>
+                    <select 
+                        onChange="(e) => {}"
+                        class="mb-4 border border-black px-2 py-1 rounded-md"
+                        name="leaveStatus" 
+                        id="leaveStatus">
+                        <option value="">Select Leave Type</option>
+                        <option value="pending" class="bg-yellow-300">Pending</option>
+                        <option value="approved" class="bg-green-300">Approved</option>
+                        <option value="rejected" class="bg-red-300">Rejected</option>
+                    </select>
+                </div>
+                <table class="table-auto w-full text-center border border-gray-200">
+                    <thead>
+                        <tr class="bg-blue-500 text-white">
+                            <th class="p-2 border border-gray-200">Employee Name</th>
+                            <th class="p-2 border border-gray-200">Date</th>
+                            <th class="p-2 border border-gray-200">Planning Type</th>
+                            <th class="p-2 border border-gray-200">Leave Type</th>
+                            <th class="p-2 border border-gray-200">Leave Duration</th>
+                            <th class="p-2 border border-gray-200">Leave Request</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Placeholder for dynamic rows -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Add Leave Form -->
+            <div class="w-1/3 bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-lg font-bold mb-4">Add Leave Types</h2>
+                <form class="space-y-4">
+                    <div id="leave-types-container" class="space-y-4">
+                        <!-- Default Leave Type -->
+                        <div id="leave-type-1" class="space-y-4">
+                            <h3 class="text-md font-semibold">Leave Type 1</h3>
+
+                            <div>
+                                <label for="leave-name-1" class="block text-sm font-medium text-gray-700">Leave Name</label>
+                                <input 
+                                    type="text" 
+                                    id="leave-name-1" 
+                                    name="leave-name-1" 
+                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                    placeholder="e.g., Annual Leave">
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Add Leave Type Button -->
+                    <div class="flex justify-end">
+                        <button 
+                            type="button" 
+                            onclick="addLeaveType()" 
+                            class="bg-green-500 text-white font-medium py-2 px-4 rounded-md shadow-sm hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 flex items-center">
+                            <span class="material-icons mr-2">add</span>
+                            Add Another Leave Type
+                        </button>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div>
+                        <button 
+                            type="submit" 
+                            class="w-full bg-indigo-600 text-white font-medium py-2 px-4 rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                            Submit Leave Types
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
