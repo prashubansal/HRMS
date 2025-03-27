@@ -20,6 +20,14 @@ app.use(express.static("public"))
 
 import employeeRouter from './routes/employee.routes.js'
 
+app.get('/health', (req, res) => {
+    res.json({
+        status: 'healthy',
+        timestamp: new Date().toISOString(),
+        corsOrigin: process.env.CORS_ORIGIN
+    })
+})
+
 // routes declaration
 //whenever the request contains "/api/v1/users" direct it to the userRouter in user.routes.js
 app.use("/api/v1/employees", employeeRouter)
