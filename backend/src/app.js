@@ -22,7 +22,6 @@ import employeeRouter from './routes/employee.routes.js'
 
 // routes declaration
 //whenever the request contains "/api/v1/users" direct it to the userRouter in user.routes.js
-debugger;
 app.use("/api/v1/employees", employeeRouter)
 
 // http://localhost:3000/api/v1/users/register
